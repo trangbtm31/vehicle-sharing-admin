@@ -90,6 +90,26 @@ class UserObj
     {
         return $this->modified;
     }
+
+    public function setPhoneNumber($phone)
+    {
+        $this->phone = $phone;
+    }
+
+    public function getPhoneNumber()
+    {
+        return $this->phone;
+    }
+
+    public function setGender($gender)
+    {
+        $this->gender = $gender;
+    }
+
+    public function getGender()
+    {
+        return $this->gender;
+    }
 }
 
 ?>
