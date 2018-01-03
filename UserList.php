@@ -15,8 +15,9 @@ if (!isset($_SESSION['user'])) {
 }
 
 //Require các file cần thiết
-require 'Config.php';
+require 'config/Config.php';
 require 'models/User.php';
+require "assets/constant.php";
 
 //Khởi tạo đối tượng thành viên (User)
 $userModel = new User();
@@ -26,9 +27,6 @@ $userList = $userModel->getList();
 
 //Tiêu đề trang
 $title = 'Thành viên - Danh sách';
-
-//View
-$view = 'user/list.tpl.php';
 
 //Require layout
 require "views/userlist.tpl.php";

@@ -4,33 +4,31 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header" data-background-color="purple">
-                            <h4 class="title">User List</h4>
-                            <p class="category">Here is a member List</p>
+                        <div class="card-header" data-background-color="orange">
+                            <h4 class="title">Active Request List</h4>
+                            <p class="category">Here is a active request list</p>
                         </div>
                         <div class="card-content table-responsive">
                             <table class="table">
                                 <thead class="text-primary">
-                                    <th>Phone</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Address</th>
-                                    <th>Birthday</th>
-                                    <th>Gender</th>
+                                    <th>Id</th>
+                                    <th>Owner</th>
+                                    <th>Start time</th>
+                                    <th>Vehicle Type</th>
+                                    <th>Status</th>
                                     <th>Created at</th>
                                     <th>Updated at</th>
                                 </thead>
                                 <tbody>
-                                <?php foreach($userList as $user): ?>
+                                <?php foreach($allRequest as $request): ?>
                                 <tr>
-                                    <td><?php echo $user->getPhoneNumber(); ?></td>
-                                    <td><?php echo $user->getFullname(); ?></td>
-                                    <td><?php echo $user->getEmail(); ?></td>
-                                    <td><?php echo $user->getAddress(); ?></td>
-                                    <td><?php echo $user->getBirthday(); ?></td>
-                                    <td><?php echo $user->getGender() == 0 ? "Nam" : "Nữ"; ?></td>
-                                    <td><?php echo $user->getCreated(); ?></td>
-                                    <td><?php echo $user->getModified(); ?></td>
+                                    <td><?php echo $request->getRequestId(); ?></td>
+                                    <td><?php echo $request->getOwnerId(); ?></td>
+                                    <td><?php echo $request->getTimeStart(); ?></td>
+                                    <td><?php echo $request->getVehicleType(); ?></td>
+                                    <td><?php echo $request->getStatus(); ?></td>
+                                    <td><?php echo $request->getCreatedDate(); ?></td>
+                                    <td><?php echo $request->getUpdatedDate(); ?></td>
                                 </tr>
                                 <?php endforeach; ?>
                                 </tbody>
@@ -101,6 +99,6 @@
         </div>
     </div>
     <script>
-        $('#userlist').addClass('active');
+        $('#requestlist').addClass('active');
     </script>
 <?php require "footer.php"?>

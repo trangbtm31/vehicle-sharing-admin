@@ -8,8 +8,9 @@ if(isset($_SESSION['user'])){
 }
 
 //Require các file cần thiết
-require 'Config.php';
+require 'config/Config.php';
 require 'models/User.php';
+require "assets/constant.php";
 
 //Kiểm tra dữ liệu POST lên
 if(isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['password']) && !empty($_POST['password'])){
