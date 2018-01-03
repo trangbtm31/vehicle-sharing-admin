@@ -10,6 +10,10 @@ class UserObj
     protected $status; // 1: admin, 2:mod,...
     protected $created;
     protected $modified;
+    protected $phone;
+    protected $gender;
+    protected $bday;
+    protected $address;
 
     public function setUserId($userId)
     {
@@ -110,6 +114,27 @@ class UserObj
     {
         return $this->gender;
     }
+
+    public function setBirthday($bday)
+    {
+        $this->bday = $bday;
+    }
+
+    public function getBirthday()
+    {
+        return $this->bday;
+    }
+
+    public function setAddress($address)
+    {
+        $this->address = $address;
+    }
+
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
 }
 
 ?>

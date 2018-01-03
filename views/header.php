@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png" />
     <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -36,19 +37,19 @@
         </div>
         <div class="sidebar-wrapper">
             <ul class="nav">
-                <li class="active">
-                    <a href="#">
+                <li id="dashboard">
+                    <a href="home.php">
                         <i class="material-icons">dashboard</i>
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li>
+                <li id="userlist">
                     <a href="UserList.php">
                         <i class="material-icons">person</i>
                         <p>User List</p>
                     </a>
                 </li>
-                <li>
+                <li id="requestlist">
                     <a href="TableList.php">
                         <i class="material-icons">content_paste</i>
                         <p>Table List</p>

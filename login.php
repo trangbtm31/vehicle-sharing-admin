@@ -3,7 +3,7 @@
 session_start();
 
 //Kiểm tra nếu đã đăng nhập thì quay về trang chủ quản trị
-if(isset($_SESSION['Admin'])){
+if(isset($_SESSION['user'])){
     header('location:home.php');
 }
 
@@ -26,7 +26,7 @@ if(isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['pass
 //Kiểm tra sự tồn tại của thành viên và mật khẩu có trùng khớp
     if($user && $user->getPassword() === md5($password)){
 //Tạo session lưu thông tin thành viên đăng nhập thành công
-        $_SESSION['Admin'] = $user;
+        $_SESSION['user'] = $user;
 
 //Chuyển hướng về trang chủ quản trị
         header('location:home.php');

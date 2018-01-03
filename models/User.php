@@ -65,6 +65,9 @@ class User
             $userObj->setPassword($row['password']);
             $userObj->setFullname($row['name']);
             $userObj->setEmail($row['email']);
+            $userObj->setBirthday($row['birthday']);
+            $userObj->setAddress($row['address']);
+            $userObj->setGender($row['gender']);
             $userObj->setCreated($row['created_at']);
             $userObj->setModified($row['updated_at']);
 
