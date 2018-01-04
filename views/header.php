@@ -41,29 +41,29 @@
 				<li id="dashboard">
 					<a href="home.php">
 						<i class="material-icons">dashboard</i>
-						<p>Dashboard</p>
+						<p>Bảng thống kê</p>
 					</a>
 				</li>
 				<li id="userlist">
 					<a href="UserList.php">
 						<i class="material-icons">person</i>
-						<p>User List</p>
+						<p>Quản lý người dùng</p>
 					</a>
 				</li>
 				<li id="requestlist">
 					<a href="RequestList.php">
 						<i class="material-icons">location_on</i>
 						<!--<i class="material-icons">content_paste</i>-->
-						<p>Request List</p>
+						<p>Quản lý các yêu cầu</p>
 					</a>
 				</li>
-				<li>
-					<a href="typography.html">
-						<i class="material-icons">library_books</i>
-						<p>Typography</p>
+				<li id="journeylist">
+					<a href="JourneyList.php">
+						<i class="material-icons">map</i>
+						<p>Quản lý các chuyến đi</p>
 					</a>
 				</li>
-				<li>
+				<!--<li>
 					<a href="icons.html">
 						<i class="material-icons">bubble_chart</i>
 						<p>Icons</p>
@@ -86,7 +86,7 @@
 						<i class="material-icons">unarchive</i>
 						<p>Upgrade to PRO</p>
 					</a>
-				</li>
+				</li>-->
 			</ul>
 		</div>
 	</div>

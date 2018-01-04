@@ -6,6 +6,12 @@
  * Time: 11:06 PM
  */
 
+define("_IS_PENDING", "Đang chờ xử lý");
+define("_IS_ACTIVE", "Đang hoạt động");
+define("_IS_CANCELED", "Đã hủy");
+define("_IS_FINISHED", "Đã hoàn thành");
+define("_IS_STARTED_TRIP", "Đã bắt đầu chuyến đi");
+define("_UPDATING", "Đang cập nhật");
 define("VEHICLE_TYPE_0", "Người đi bộ");
 define("VEHICLE_TYPE_1", "Xe máy");
 define("VEHICLE_TYPE_2", "Ô tô");

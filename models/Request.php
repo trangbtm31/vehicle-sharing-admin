@@ -24,75 +24,43 @@ class Request
 	 * @return array
 	 */
 	public function getActiveRequestList() {
-		$query = "SELECT * FROM requests WHERE status = 1 ORDER BY id";
+		$query = "SELECT * FROM requests WHERE status = 1 ORDER BY id DESC";
 
-		$results = $this->getListBase($query);
-		foreach ($results as $result) {
-			switch($result->getVehicleType()) {
-				case 0 : $result->setVehicleType(VEHICLE_TYPE_0); break;
-				case 1 : $result->setVehicleType(VEHICLE_TYPE_1); break;
-				case 2 : $result->setVehicleType(VEHICLE_TYPE_2); break;
-			}
-		}
-		return $results;
+		return $this->getListBase($query);
 	}
 
 	/**
 	 * @return array
 	 */
 	public function getPendingRequestList() {
-		$query = "SELECT * FROM requests WHERE status = 2 ORDER BY id";
+		$query = "SELECT * FROM requests WHERE status = 2 ORDER BY id DESC";
 
-		$results = $this->getListBase($query);
-		foreach ($results as $result) {
-			switch($result->getVehicleType()) {
-				case 0 : $result->setVehicleType(VEHICLE_TYPE_0); break;
-				case 1 : $result->setVehicleType(VEHICLE_TYPE_1); break;
-				case 2 : $result->setVehicleType(VEHICLE_TYPE_2); break;
-			}
-		}
-		return $results;
+		return $this->getListBase($query);
 	}
 
 	/**
 	 * @return array
 	 */
 	public function getCancelRequestList() {
-		$query = "SELECT * FROM requests WHERE status = 0 ORDER BY id";
+		$query = "SELECT * FROM requests WHERE status = 0 ORDER BY id DESC";
 
-		$results = $this->getListBase($query);
-		foreach ($results as $result) {
-			switch($result->getVehicleType()) {
-				case 0 : $result->setVehicleType(VEHICLE_TYPE_0); break;
-				case 1 : $result->setVehicleType(VEHICLE_TYPE_1); break;
-				case 2 : $result->setVehicleType(VEHICLE_TYPE_2); break;
-			}
-		}
-		return $results;
+		return $this->getListBase($query);
 	}
 
 	/**
 	 * @return array
 	 */
 	public function getRequestList() {
-		$query = "SELECT * FROM requests ORDER BY id";
+		$query = "SELECT * FROM requests ORDER BY id DESC LIMIT 10";
 
-		$results = $this->getListBase($query);
-		foreach ($results as $result) {
-			switch($result->getVehicleType()) {
-				case 0 : $result->setVehicleType(VEHICLE_TYPE_0); break;
-				case 1 : $result->setVehicleType(VEHICLE_TYPE_1); break;
-				case 2 : $result->setVehicleType(VEHICLE_TYPE_2); break;
-			}
-		}
-		return $results;
+		return $this->getListBase($query);
 	}
 
 	/**
 	 * @param $query
 	 * @return array
 	 */
-	public function getListBase($query)
+	private function getListBase($query)
 	{
 		//SQL
 		$sql = $query;
@@ -121,6 +89,20 @@ class Request
 
 			//Gán vào mãng lưu trữ
 			$listRequest[] = $requestObj;
+		}
+		foreach ($listRequest as $request) {
+			switch($request->getVehicleType()) {
+				case 0 : $request->setVehicleType(VEHICLE_TYPE_0); break;
+				case 1 : $request->setVehicleType(VEHICLE_TYPE_1); break;
+				case 2 : $request->setVehicleType(VEHICLE_TYPE_2); break;
+			}
+			switch($request->getStatus()) {
+				case 0: $request->setStatus("<i style='font-weight: normal;'>"._IS_CANCELED."</i>"); break;
+				case 1: $request->setStatus("<span class='text-info'>"._IS_ACTIVE."</span>"); break;
+				case 2: $request->setStatus("<span class='text-warning'>"._IS_PENDING."</span>"); break;
+				case 3: $request->setStatus("<span class='text-danger'>"._IS_STARTED_TRIP."</span>"); break;
+				case 4: $request->setStatus("<span class='text-success'>"._IS_FINISHED."</span>"); break;
+			}
 		}
 
 		//Return

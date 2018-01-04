@@ -14,6 +14,9 @@ class UserObj
     protected $gender;
     protected $bday;
     protected $address;
+    protected $avgHikerVote;
+    protected $avgDriverVote;
+    protected $role;
 
     public function setUserId($userId)
     {
@@ -134,6 +137,37 @@ class UserObj
     {
         return $this->address;
     }
+
+    public function setAvgHikerVote($avgHikerVote)
+    {
+        $this->avgHikerVote = $avgHikerVote;
+    }
+
+    public function getAvgHikerVote()
+    {
+        return $this->userId;
+    }
+
+    public function setAvgDriverVote($avgDriverVote)
+    {
+        $this->avgDriverVote = $avgDriverVote;
+    }
+
+    public function getAvgDriverVote()
+    {
+        return $this->avgDriverVote;
+    }
+
+    public function setRole($userRole)
+    {
+        $this->role = $userRole;
+    }
+
+    public function getRole()
+    {
+        return $this->role;
+    }
+
 
 }
 

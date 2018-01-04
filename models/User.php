@@ -46,7 +46,7 @@ class User
     public function getList()
     {
         //SQL
-        $sql = "SELECT * FROM users ORDER BY id DESC";
+        $sql = "SELECT * FROM users ORDER BY id DESC LIMIT 10";
 
         //Query
         $this->db->query($sql);
@@ -70,6 +70,9 @@ class User
             $userObj->setGender($row['gender']);
             $userObj->setCreated($row['created_at']);
             $userObj->setModified($row['updated_at']);
+            $userObj->setAvgHikerVote($row['avg_hiker_vote']);
+            $userObj->setAvgDriverVote($row['avg_driver_vote']);
+            $userObj->setRole($row['role']);
 
         //Gán vào mãng lưu trữ
             $listUser[] = $userObj;
