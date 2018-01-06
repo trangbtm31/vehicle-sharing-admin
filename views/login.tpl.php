@@ -60,7 +60,7 @@
                         </div>
 
 
-                        <div class="form-group">
+                       <!-- <div class="form-group">
                             <div class="col-md-12 control">
                                 <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
                                     Don't have an account!
@@ -69,14 +69,14 @@
                                     </a>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                     </form>
 
 
                 </div>
             </div>
         </div>
-        <div id="signupbox" style="display:none; margin-top:50px"
+        <!--<div id="signupbox" style="display:none; margin-top:50px"
              class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
             <div class="panel panel-info">
                 <div class="panel-heading">
@@ -121,7 +121,7 @@
                         </div>
 
                         <div class="form-group">
-                            <!-- Button -->
+                            <!-- Button
                             <div class="col-md-offset-3 col-md-9">
                                 <button id="btn-signup" type="button" class="btn btn-info"><i class="icon-hand-right"></i>
                                     &nbsp Sign Up
@@ -135,7 +135,7 @@
             </div>
 
 
-        </div>
+        </div>-->
     </div>
 
 </body>

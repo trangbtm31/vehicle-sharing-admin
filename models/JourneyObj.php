@@ -20,6 +20,10 @@ class JourneyObj
 	protected $createdDate;
 	protected $updatedDate;
 	protected $finishedDate;
+	protected $userDeleteUsername;
+	protected $hikerUsername;
+	protected $driverUsername;
+	protected $senderUsername;
 
 	public function setJourneyId($journeyId)
 	{
@@ -140,5 +144,45 @@ class JourneyObj
 	public function getFinishedDate()
 	{
 		return $this->finishedDate;
+	}
+
+	public function setDeleteUsername($username)
+	{
+		$this->userDeleteUsername = $username;
+	}
+
+	public function getDeleteUsername()
+	{
+		return $this->userDeleteUsername;
+	}
+
+	public function setHikerUsername($username)
+	{
+		$this->hikerUsername = $username;
+	}
+
+	public function getHikerUsername()
+	{
+		return $this->hikerUsername;
+	}
+
+	public function setDriverUsername($username)
+	{
+		$this->driverUsername = $username;
+	}
+
+	public function getDriverUsername()
+	{
+		return $this->driverUsername;
+	}
+
+	public function setSenderUsername($username)
+	{
+		$this->senderUsername = $username;
+	}
+
+	public function getSenderUsername()
+	{
+		return $this->senderUsername;
 	}
 }

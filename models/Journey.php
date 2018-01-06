@@ -30,7 +30,7 @@ class Journey
 	 * @return array
 	 */
 	public function getCancelJourneyList() {
-		$query = 'SELECT * FROM journeys WHERE status = 0';
+		$query = 'SELECT * FROM journeys WHERE status = 0 ORDER BY id DESC';
 
 		$result = $this->getListBase($query);
 		return $result;
@@ -49,12 +49,32 @@ class Journey
 		$conn = $this->db->query($sql);
 
 		//Tạo mãng lưu trữ
-		$listRequest = array();
+		$listJourney = array();
 
 		//Fetch
 		while ($row = $this->db->fetch($conn)) {
 			//Khởi tạo đối tượng UserObj
 			$journeyObj = new JourneyObj();
+
+			$query4 = "SELECT * FROM users WHERE id =".$row['user_delete_id'];
+			$query1 = "SELECT * FROM users WHERE id =".$row['hiker_id'];
+			$query2 = "SELECT * FROM users WHERE id =".$row['driver_id'];
+			$query3 = "SELECT * FROM users WHERE id =".$row['sender_id'];
+
+			$conn1 = $this->db->query($query4);
+			$conn2 = $this->db->query($query1);
+			$conn3 = $this->db->query($query2);
+			$conn4 = $this->db->query($query3);
+
+			$userDeleteInfo = $this->db->fetch($conn1);
+			$hikerInfo = $this->db->fetch($conn2);
+			$driverInfo = $this->db->fetch($conn3);
+			$senderInfo = $this->db->fetch($conn4);
+
+			$journeyObj->setDeleteUsername($userDeleteInfo['name']);
+			$journeyObj->setHikerUsername($hikerInfo['name']);
+			$journeyObj->setDriverUsername($driverInfo['name']);
+			$journeyObj->setSenderUsername($senderInfo['name']);
 
 			//Gán thông tin
 			$journeyObj->setJourneyId($row['id']);
@@ -69,6 +89,13 @@ class Journey
 			$journeyObj->setFinishedDate($row['finish_at']);
 			$journeyObj->setCreatedDate($row['created_at']);
 			$journeyObj->setUpdatedDate($row['updated_at']);
+
+			switch($journeyObj->getStatus()) {
+				case 0: $journeyObj->setStatus("<i style='font-weight: normal;'>"._IS_CANCELED."</i>"); break;
+				case 1: $journeyObj->setStatus("<span class='text-info'>"._IS_ACTIVE."</span>"); break;
+				case 2: $journeyObj->setStatus("<span class='text-warning'>"._IS_STARTED_TRIP."</span>"); break;
+				case 3: $journeyObj->setStatus("<span class='text-success'>"._IS_FINISHED."</span>"); break;
+			}
 
 			//Gán vào mãng lưu trữ
 			$listJourney[] = $journeyObj;

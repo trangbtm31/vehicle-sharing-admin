@@ -158,6 +158,11 @@
                                         <td><?php echo $user->getBirthday()? $user->getBirthday() : '<i>'._UPDATING.'</i>'; ?></td>
                                         <td><?php echo $user->getGender() == 0 ? "Nam" : "Nữ"; ?></td>
                                         <td><?php echo $user->getCreated(); ?></td>
+                                        <td>
+                                            <button type="button" rel="tooltip" title="Chỉnh sửa thông tin" class="btn btn-primary btn-simple btn-xs">
+                                                <i class="material-icons">edit</i>
+                                            </button>
+                                        </td>
                                     </tr>
                                 <?php endforeach; ?>
                                 </tbody>
