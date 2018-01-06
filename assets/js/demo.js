@@ -20,9 +20,9 @@ demo = {
         /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
         dataDailySalesChart = {
-            labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+            labels: ['12am', '3am', '6am', '9am', '12pm', '3pm', '6pm', '9pm'],
             series: [
-                [12, 17, 7, 17, 23, 18, 38]
+                [0, 1, 0, 0, 2, 3, 1, 4]
             ]
         };
 
@@ -50,9 +50,9 @@ demo = {
         /* ----------==========     Daily Sales Chart initialization    ==========---------- */
 
         dataDailySalesChart = {
-            labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+            labels: ['12am', '3am', '6am', '9am', '12pm', '3pm', '6pm', '9pm'],
             series: [
-                [12, 17, 7, 17, 23, 18, 38]
+                [0, 1, 2, 0, 0, 0, 2, 3]
             ]
         };
 
@@ -61,7 +61,7 @@ demo = {
                 tension: 0
             }),
             low: 0,
-            high: 50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+            high: 10, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
             chartPadding: {
                 top: 0,
                 right: 0,
@@ -79,9 +79,9 @@ demo = {
         /* ----------==========     Completed Tasks Chart initialization    ==========---------- */
 
         dataCompletedTasksChart = {
-            labels: ['12am', '3pm', '6pm', '9pm', '12pm', '3am', '6am', '9am'],
+            labels: ['12am', '3am', '6am', '9am', '12pm', '3pm', '6pm', '9pm'],
             series: [
-                [230, 750, 450, 300, 280, 240, 200, 190]
+                [0, 1, 2, 0, 0, 1, 2, 0]
             ]
         };
 
@@ -90,7 +90,7 @@ demo = {
                 tension: 0
             }),
             low: 0,
-            high: 1000, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+            high: 10, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
             chartPadding: {
                 top: 0,
                 right: 0,
@@ -108,10 +108,9 @@ demo = {
         /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
 
         var dataEmailsSubscriptionChart = {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            labels: ['12am', '3am', '6am', '9am', '12pm', '3pm', '6pm', '9pm'],
             series: [
-                [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
-
+                [0, 1, 2, 1, 4, 1, 2, 3]
             ]
         };
         var optionsEmailsSubscriptionChart = {
@@ -119,7 +118,7 @@ demo = {
                 showGrid: false
             },
             low: 0,
-            high: 1000,
+            high: 10,
             chartPadding: {
                 top: 0,
                 right: 5,

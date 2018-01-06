@@ -79,7 +79,7 @@ class User
 
         $userCancelList = array();
         while($row = $this->db->fetch($conn1)) {
-            $query = "SELECT * from journeys WHERE user_delete_id = ".$row['id']." AND status = 0";
+            $query = "SELECT * from journeys WHERE user_delete_id = ".$row['id']." AND status = 0 ";
             
             $conn = $this->db->query($query);
             $count = 0;
@@ -87,7 +87,7 @@ class User
             $userObj = new UserObj();
             while ($row1 = $this->db->fetch($conn)) {
                 if($row1) {
-                    $count += 1;
+                    $count ++;
                 }
             }
 

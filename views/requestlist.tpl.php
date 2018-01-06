@@ -57,6 +57,11 @@
                                         <td><?php echo $request->getTimeStart(); ?></td>
                                         <td><?php echo $request->getVehicleType(); ?></td>
                                         <td style="font-weight: bold;"><?php echo $request->getStatus(); ?></td>
+                                        <td>
+                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                                                <i class="material-icons">close</i>
+                                            </button>
+                                        </td>
                                     </tr>
                                 <?php endforeach; ?>
                                 </tbody>

@@ -5,8 +5,8 @@
 			<div class="col-md-12">
 				<div class="card">
 					<div class="card-header" data-background-color="red">
-						<h4 class="title">Danh sách Request</h4>
-						<p class="category">Danh sách các yêu cầu đi chung được người dùng đăng kí lên hệ thống </p>
+						<h4 class="title">Danh sách chuyến đi bị hủy</h4>
+						<p class="category">Danh sách các chuyến đi không thành công </p>
 					</div>
 					<div class="card-content table-responsive">
 						<table class="table">
@@ -34,7 +34,7 @@
 				<div class="card">
 					<div class="card-header" data-background-color="orange">
 						<h4 class="title">Danh sách tất cả các chuyến đi</h4>
-						<p class="category">Danh sách các chuyến đi được tạo ra </p>
+						<p class="category">Danh sách các chuyến đi được tạo ra khi đã có hai người đi chung </p>
 					</div>
 					<div class="card-content table-responsive">
 						<table class="table">

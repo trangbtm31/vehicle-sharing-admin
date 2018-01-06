@@ -52,7 +52,7 @@ class Request
 	 * @return array
 	 */
 	public function getRequestList() {
-		$query = "SELECT * FROM requests ORDER BY id DESC LIMIT 10";
+		$query = "SELECT * FROM requests  LIMIT 10";
 
 		return $this->getListBase($query);
 	}
