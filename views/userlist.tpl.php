@@ -2,26 +2,46 @@
     <div class="content">
         <div class="container-fluid">
             <div class="row">
+
+                <!-- Modal -->
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Bạn muốn khóa người dùng này ?</h4>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Có </button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal"> Hủy</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header" data-background-color="purple">
-                            <h4 class="title">User List</h4>
-                            <p class="category">Here is a member List</p>
+                        <div class="card-header" data-background-color="red">
+                            <h4 class="title">Danh sách người dùng hủy chuyến đi nhiều nhất</h4>
+                            <p class="category">Đây là danh sách các người dùng đã hủy chuyến đi nhiều nhất được sắp xếp từ trên xuống</p>
                         </div>
                         <div class="card-content table-responsive">
                             <table class="table">
-                                <thead class="text-primary">
-                                    <th>Phone</th>
-                                    <th>Name</th>
+                                <thead class="text-danger">
+                                    <th>Số điện thoại </th>
+                                    <th>Tên </th>
                                     <th>Email</th>
-                                    <th>Address</th>
-                                    <th>Birthday</th>
-                                    <th>Gender</th>
-                                    <th>Created at</th>
-                                    <th>Updated at</th>
+                                    <th>Địa chỉ </th>
+                                    <th>Ngày sinh </th>
+                                    <th>Giới tính </th>
+                                    <th>Số lần hủy chuyến</th>
+                                    <th>Ngày đăng kí </th>
                                 </thead>
                                 <tbody>
-                                <?php foreach($userList as $user): ?>
+                                <?php foreach($cancelJourneyUserList as $user): ?>
                                 <tr>
                                     <td><?php echo $user->getPhoneNumber(); ?></td>
                                     <td><?php echo $user->getFullname(); ?></td>
@@ -29,8 +49,21 @@
                                     <td><?php echo $user->getAddress() ? $user->getAddress() : '<i>'._UPDATING.'</i>'; ?></td>
                                     <td><?php echo $user->getBirthday()? $user->getBirthday() : '<i>'._UPDATING.'</i>'; ?></td>
                                     <td><?php echo $user->getGender() == 0 ? "Nam" : "Nữ"; ?></td>
+                                    <td><strong><?php $x = $user->getJourneyDeleteTimes();
+                                        if($x  >= 3 && $x < 5){
+                                            echo "<span class='text-warning' >".$x ."</span>";
+                                        }elseif($x >= 5){
+                                            echo "<span class='text-danger' >".$x ."</span>";
+                                        }else{
+                                            echo $x;
+                                        }; ?>
+                                    </strong></td>
                                     <td><?php echo $user->getCreated(); ?></td>
-                                    <td><?php echo $user->getModified(); ?></td>
+                                    <td>
+                                        <?php if($x >= 5) {?>
+                                            <a href="#" data-toggle="modal" data-target="#myModal"><i class="material-icons text-danger">lock_outline</i></a>
+                                        <?php } ?>
+                                    </td>
                                 </tr>
                                 <?php endforeach; ?>
                                 </tbody>
@@ -40,18 +73,18 @@
                 </div>
                 <div class="col-md-6">
                     <div class="card">
-                        <div class="card-header" data-background-color="purple">
-                            <h4 class="title">User Rating list</h4>
-                            <p class="category">Here is a User rating list that order by the most voted user</p>
+                        <div class="card-header" data-background-color="blue">
+                            <h4 class="title">Danh sách người dùng được bình chọn cao nhất</h4>
+                            <p class="category">Danh sách các người dùng được bình chọn cao nhất </p>
                         </div>
                         <div class="card-content table-responsive">
                             <table class="table">
                                 <thead class="text-primary">
-                                <th>Phone</th>
-                                <th>Name</th>
+                                <th>Số điện thoại </th>
+                                <th>Tên </th>
                                 <th>Email</th>
-                                <th>Address</th>
-                                <th>Rate value</th>
+                                <th>Địa chỉ </th>
+                                <th>Điểm bình chọn</th>
                                 </thead>
                                 <tbody>
                                 <?php foreach($userList as $user): ?>
@@ -70,18 +103,17 @@
                 </div>
                 <div class="col-md-6">
                     <div class="card">
-                        <div class="card-header" data-background-color="purple">
-                            <h4 class="title">Favorite User List</h4>
-                            <p class="category">Here is a User list that order by the most favorited user</p>
+                        <div class="card-header" data-background-color="orange">
+                            <h4 class="title">Danh sách người dùng được nhiều người yêu thích</h4>
+                            <p class="category">Đây là các danh sách người dùng được yêu thích nhất</p>
                         </div>
                         <div class="card-content table-responsive">
                             <table class="table">
-                                <thead class="text-primary">
-                                <th>Phone</th>
-                                <th>Name</th>
+                                <th>Số điện thoại </th>
+                                <th>Tên </th>
                                 <th>Email</th>
-                                <th>Address</th>
-                                <th>Liked amount</th>
+                                <th>Địa chỉ </th>
+                                <th>Số lượng người yêu thích</th>
                                 </thead>
                                 <tbody>
                                 <?php foreach($userList as $user): ?>
@@ -90,7 +122,7 @@
                                         <td><?php echo $user->getFullname(); ?></td>
                                         <td><?php echo $user->getEmail() ? $user->getEmail() : '<i>'._UPDATING.'</i>'; ?></td>
                                         <td><?php echo $user->getAddress() ? $user->getAddress() : '<i>'._UPDATING.'</i>'; ?></td>
-                                        <td>10</td>
+                                        <td><?php echo rand(1,10); ?></td>
                                     </tr>
                                 <?php endforeach; ?>
                                 </tbody>
@@ -101,26 +133,31 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header" data-background-color="purple">
-                            <h4 class="title">User Rating list</h4>
-                            <p class="category">Here is a User rating list that order by the most voted user</p>
+                            <h4 class="title">Danh sách tất cả người dùng</h4>
+                            <p class="category">Danh sách các người dùng đã đăng kí thành viên</p>
                         </div>
                         <div class="card-content table-responsive">
                             <table class="table">
                                 <thead class="text-primary">
-                                <th>Phone</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Address</th>
-                                <th>Rate value</th>
+                                    <th>Số điện thoại </th>
+                                    <th>Tên </th>
+                                    <th>Email</th>
+                                    <th>Địa chỉ </th>
+                                    <th>Ngày sinh </th>
+                                    <th>Giới tính </th>
+                                    <th>Ngày đăng kí </th>
                                 </thead>
                                 <tbody>
                                 <?php foreach($userList as $user): ?>
                                     <tr>
+
                                         <td><?php echo $user->getPhoneNumber(); ?></td>
                                         <td><?php echo $user->getFullname(); ?></td>
                                         <td><?php echo $user->getEmail() ? $user->getEmail() : '<i>'._UPDATING.'</i>'; ?></td>
                                         <td><?php echo $user->getAddress() ? $user->getAddress() : '<i>'._UPDATING.'</i>'; ?></td>
-                                        <td>5</td>
+                                        <td><?php echo $user->getBirthday()? $user->getBirthday() : '<i>'._UPDATING.'</i>'; ?></td>
+                                        <td><?php echo $user->getGender() == 0 ? "Nam" : "Nữ"; ?></td>
+                                        <td><?php echo $user->getCreated(); ?></td>
                                     </tr>
                                 <?php endforeach; ?>
                                 </tbody>

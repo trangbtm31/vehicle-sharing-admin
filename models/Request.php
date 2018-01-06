@@ -1,6 +1,7 @@
 <?php
 require_once Config::BASE_PATH . 'database/Database.php';
 require_once Config::BASE_PATH . 'models/RequestObj.php';
+require Config::BASE_PATH . 'models/User.php';
 
 /**
  * Created by PhpStorm.
@@ -66,13 +67,13 @@ class Request
 		$sql = $query;
 
 		//Query
-		$this->db->query($sql);
+		$conn1 = $this->db->query($sql);
 
 		//Tạo mãng lưu trữ
 		$listRequest = array();
 
 		//Fetch
-		while ($row = $this->db->fetch()) {
+		while ($row = $this->db->fetch($conn1)) {
 			//Khởi tạo đối tượng UserObj
 			$requestObj = new RequestObj();
 
@@ -86,7 +87,13 @@ class Request
 			$requestObj->setStatus($row['status']);
 			$requestObj->setCreatedDate($row['created_at']);
 			$requestObj->setUpdatedDate($row['updated_at']);
+			
+			$query = "SELECT * FROM users WHERE id =".$row['user_id'];
 
+			$conn = $this->db->query($query);
+
+			$userInfo = $this->db->fetch($conn);
+			$requestObj->setUsername($userInfo['name']);
 			//Gán vào mãng lưu trữ
 			$listRequest[] = $requestObj;
 		}

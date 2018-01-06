@@ -17,6 +17,7 @@ class UserObj
     protected $avgHikerVote;
     protected $avgDriverVote;
     protected $role;
+    protected $ownerTotalJourneyDelete;
 
     public function setUserId($userId)
     {
@@ -166,6 +167,16 @@ class UserObj
     public function getRole()
     {
         return $this->role;
+    }
+
+    public function setJourneyDeleteTimes($count)
+    {
+        $this->ownerTotalJourneyDelete = $count;
+    }
+
+    public function getJourneyDeleteTimes()
+    {
+        return $this->ownerTotalJourneyDelete;
     }
 
 

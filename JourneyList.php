@@ -11,23 +11,23 @@ session_start();
 
 //Kiểm tra nếu chưa đăng nhập thì quay về trang đăng nhập
 if (!isset($_SESSION['user'])) {
-    header('location:login.php');
+	header('location:login.php');
 }
 
 //Require các file cần thiết
 require 'config/Config.php';
-require 'models/User.php';
+require 'models/Journey.php';
 require "assets/constant.php";
 
 //Khởi tạo đối tượng thành viên (User)
-$userModel = new User();
+$journeyModel = new Journey();
 
 //Lấy danh sách thành viên
-$userList = $userModel->getUserList();
-$cancelJourneyUserList = $userModel->getTopDeleteJourneyUser();
+$journeyList = $journeyModel->getJourneyList();
+$cancelJourneyList = $journeyModel->getJourneyList();
 
 //Tiêu đề trang
-$title = 'Thành viên - Danh sách';
+$title = 'Chuyến đi - Danh sách';
 
 //Require layout
-require "views/userlist.tpl.php";
+require "views/journeylist.tpl.php";

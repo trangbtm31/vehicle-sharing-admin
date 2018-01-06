@@ -17,6 +17,26 @@ class Journey
 	}
 
 	/**
+	 * @return array
+	 */
+	public function getJourneyList() {
+		$query = 'SELECT * FROM journeys ORDER BY id DESC LIMIT 10';
+
+		$result = $this->getListBase($query);
+		return $result;
+	}
+
+	/**
+	 * @return array
+	 */
+	public function getCancelJourneyList() {
+		$query = 'SELECT * FROM journeys WHERE status = 0';
+
+		$result = $this->getListBase($query);
+		return $result;
+	}
+
+	/**
 	 * @param $query
 	 * @return array
 	 */
@@ -26,13 +46,13 @@ class Journey
 		$sql = $query;
 
 		//Query
-		$this->db->query($sql);
+		$conn = $this->db->query($sql);
 
 		//Tạo mãng lưu trữ
 		$listRequest = array();
 
 		//Fetch
-		while ($row = $this->db->fetch()) {
+		while ($row = $this->db->fetch($conn)) {
 			//Khởi tạo đối tượng UserObj
 			$journeyObj = new JourneyObj();
 

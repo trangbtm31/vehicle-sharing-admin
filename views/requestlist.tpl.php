@@ -12,23 +12,21 @@
                             <table class="table">
                                 <thead class="text-primary">
                                     <th>Id</th>
-                                    <th>Owner</th>
-                                    <th>Start time</th>
-                                    <th>Vehicle Type</th>
-                                    <th>Status</th>
-                                    <th>Created at</th>
-                                    <th>Updated at</th>
+                                    <th>Tên người dùng </th>
+                                    <th>Thời gian xuất phát </th>
+                                    <th>Loại phương tiện</th>
+                                    <th>Trạng thái</th>
+                                    <th>Thời điểm tạo request</th>
                                 </thead>
                                 <tbody>
                                 <?php foreach($allRequest as $request): ?>
                                 <tr>
                                     <td><?php echo $request->getRequestId(); ?></td>
-                                    <td><?php echo $request->getOwnerId(); ?></td>
+                                    <td><?php echo $request->getUsername(); ?></td>
                                     <td><?php echo $request->getTimeStart(); ?></td>
                                     <td><?php echo $request->getVehicleType(); ?></td>
                                     <td style="font-weight: bold;"><?php echo $request->getStatus(); ?></td>
                                     <td><?php echo $request->getCreatedDate(); ?></td>
-                                    <td><?php echo $request->getUpdatedDate(); ?></td>
                                 </tr>
                                 <?php endforeach; ?>
                                 </tbody>
@@ -46,16 +44,16 @@
                             <table class="table">
                                 <thead class="text-primary">
                                 <th>Id</th>
-                                <th>Owner</th>
-                                <th>Start time</th>
-                                <th>Vehicle Type</th>
-                                <th>Status</th>
+                                <th>Tên người dùng </th>
+                                <th>Thời gian xuất phát </th>
+                                <th>Loại phương tiện</th>
+                                <th>Trạng thái</th>
                                 </thead>
                                 <tbody>
                                 <?php foreach($pendingRequestList as $request): ?>
                                     <tr>
                                         <td><?php echo $request->getRequestId(); ?></td>
-                                        <td><?php echo $request->getOwnerId(); ?></td>
+                                        <td><?php echo $request->getUsername(); ?></td>
                                         <td><?php echo $request->getTimeStart(); ?></td>
                                         <td><?php echo $request->getVehicleType(); ?></td>
                                         <td style="font-weight: bold;"><?php echo $request->getStatus(); ?></td>

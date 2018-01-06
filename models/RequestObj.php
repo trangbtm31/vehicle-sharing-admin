@@ -17,6 +17,7 @@ class RequestObj
 	protected $updatedDate;
 	protected $sourceLocation;
 	protected $destinationLocation;
+	protected $username;
 
 	public function setRequestId($requestId)
 	{
@@ -68,7 +69,6 @@ class RequestObj
 		return $this->status;
 	}
 
-
 	public function setCreatedDate($createdDate)
 	{
 		$this->createdDate = $createdDate;
@@ -107,6 +107,16 @@ class RequestObj
 	public function getEndlocation()
 	{
 		return $this->destinationLocation;
+	}
+
+	public function setUsername($username)
+	{
+		$this->username = $username;
+	}
+
+	public function getUsername()
+	{
+		return $this->username;
 	}
 
 

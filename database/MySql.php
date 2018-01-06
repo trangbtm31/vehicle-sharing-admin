@@ -20,12 +20,12 @@ class MySql
 
     public function query($sql){
 //Truy vấn và return
-        return $this->_query = mysqli_query($this->connection, $sql);
+        return mysqli_query($this->connection, $sql);
     }
 
-    public function fetch(){
+    public function fetch($conn){
 //Fetch và return
-        return mysqli_fetch_assoc($this->_query);
+        return mysqli_fetch_assoc($conn);
     }
 }
 ?>
