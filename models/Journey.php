@@ -1,6 +1,7 @@
 <?php
 require_once Config::BASE_PATH . 'database/Database.php';
 require_once Config::BASE_PATH . 'models/JourneyObj.php';
+require_once Config::BASE_PATH . 'models/UserObj.php';
 /**
  * Created by PhpStorm.
  * User: trang
@@ -35,6 +36,28 @@ class Journey
 		$result = $this->getListBase($query);
 		return $result;
 	}
+	/**
+	 * @return array
+	 */
+	public function getDangerJourneyList() {
+		$query = 'SELECT * FROM journeys WHERE status = 5 ORDER BY id DESC';
+
+
+		$result = $this->getListBase($query);
+		return $result;
+	}
+
+	/**
+	 * @param $userId
+	 * @return array|null
+	 */
+	public function getUsername($userId) {
+		$query = "SELECT * FROM users WHERE id =".$userId;
+
+		$user = $this->db->fetch($this->db->query($query));
+		return $user;
+	}
+	
 
 	/**
 	 * @param $query
@@ -56,20 +79,10 @@ class Journey
 			//Khởi tạo đối tượng UserObj
 			$journeyObj = new JourneyObj();
 
-			$query4 = "SELECT * FROM users WHERE id =".$row['user_delete_id'];
-			$query1 = "SELECT * FROM users WHERE id =".$row['hiker_id'];
-			$query2 = "SELECT * FROM users WHERE id =".$row['driver_id'];
-			$query3 = "SELECT * FROM users WHERE id =".$row['sender_id'];
-
-			$conn1 = $this->db->query($query4);
-			$conn2 = $this->db->query($query1);
-			$conn3 = $this->db->query($query2);
-			$conn4 = $this->db->query($query3);
-
-			$userDeleteInfo = $this->db->fetch($conn1);
-			$hikerInfo = $this->db->fetch($conn2);
-			$driverInfo = $this->db->fetch($conn3);
-			$senderInfo = $this->db->fetch($conn4);
+			$userDeleteInfo = $this->getUsername($row['user_delete_id']);
+			$hikerInfo =$this->getUsername($row['hiker_id']);
+			$driverInfo = $this->getUsername($row['driver_id']);
+			$senderInfo = $this->getUsername($row['sender_id']);
 
 			$journeyObj->setDeleteUsername($userDeleteInfo['name']);
 			$journeyObj->setHikerUsername($hikerInfo['name']);
@@ -90,11 +103,21 @@ class Journey
 			$journeyObj->setCreatedDate($row['created_at']);
 			$journeyObj->setUpdatedDate($row['updated_at']);
 
+			if($journeyObj->getStatus() == 5) {
+				$query5 = 'SELECT * FROM reports WHERE journey_id ='.$journeyObj->getJourneyId();
+				$dangerReport = $this->db->fetch($this->db->query($query5));
+				$journeyObj->setDangerLocation($dangerReport['report_location']);
+				$journeyObj->setDangerUserId($dangerReport['reported_user_id']);
+				$dangerUsername = $this->getUsername($dangerReport['reported_user_id']);
+				$journeyObj->setDangerUsername($dangerUsername['name']);
+			}
+
 			switch($journeyObj->getStatus()) {
 				case 0: $journeyObj->setStatus("<i style='font-weight: normal;'>"._IS_CANCELED."</i>"); break;
 				case 1: $journeyObj->setStatus("<span class='text-info'>"._IS_ACTIVE."</span>"); break;
 				case 2: $journeyObj->setStatus("<span class='text-warning'>"._IS_STARTED_TRIP."</span>"); break;
 				case 3: $journeyObj->setStatus("<span class='text-success'>"._IS_FINISHED."</span>"); break;
+				case 5: $journeyObj->setStatus("<h3 class='text-danger'>"._IS_SOS."</h3>"); break;
 			}
 
 			//Gán vào mãng lưu trữ

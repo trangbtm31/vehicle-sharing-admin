@@ -3,7 +3,6 @@
 
 <head>
 	<meta charset="utf-8"/>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png"/>
 	<link rel="icon" type="image/png" href="../assets/img/favicon.png"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
@@ -20,6 +19,8 @@
 	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet'
 		  type='text/css'>
+	<script src="../assets/js/jquery-3.2.1.min.js"></script>
+	<script src="../assets/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -63,30 +64,6 @@
 						<p>Quản lý các chuyến đi</p>
 					</a>
 				</li>
-				<!--<li>
-					<a href="icons.html">
-						<i class="material-icons">bubble_chart</i>
-						<p>Icons</p>
-					</a>
-				</li>
-				<li>
-					<a href="maps.html">
-						<i class="material-icons">location_on</i>
-						<p>Maps</p>
-					</a>
-				</li>
-				<li>
-					<a href="notifications.html">
-						<i class="material-icons text-gray">notifications</i>
-						<p>Notifications</p>
-					</a>
-				</li>
-				<li class="active-pro">
-					<a href="upgrade.html">
-						<i class="material-icons">unarchive</i>
-						<p>Upgrade to PRO</p>
-					</a>
-				</li>-->
 			</ul>
 		</div>
 	</div>
@@ -110,25 +87,12 @@
 								<p class="hidden-lg hidden-md">Dashboard</p>
 							</a>
 						</li>
-						<!--<li>
-							<a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
-								<i class="material-icons">notifications</i>
-								<span class="notification">5</span>
-								<p class="hidden-lg hidden-md">Notifications</p>
-							</a>
-						</li>-->
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 								<i class="material-icons">person</i>
 								<p class="hidden-lg hidden-md">Profile</p>
 							</a>
 							<ul class="dropdown-menu">
-								<li>
-									<a href="#">Account</a>
-								</li>
-								<li>
-									<a href="#">Settings</a>
-								</li>
 								<li>
 									<a href="../logout.php">Sign out</a>
 								</li>
@@ -148,3 +112,5 @@
 				</div>
 			</div>
 		</nav>
+		
+		

@@ -24,6 +24,9 @@ class JourneyObj
 	protected $hikerUsername;
 	protected $driverUsername;
 	protected $senderUsername;
+	protected $dangerLocation;
+	protected $dangerUsername;
+	protected $dangerUserId;
 
 	public function setJourneyId($journeyId)
 	{
@@ -184,5 +187,35 @@ class JourneyObj
 	public function getSenderUsername()
 	{
 		return $this->senderUsername;
+	}
+
+	public function setDangerLocation($address)
+	{
+		$this->dangerLocation = $address;
+	}
+
+	public function getDangerLocation()
+	{
+		return $this->dangerLocation;
+	}
+
+	public function setDangerUserId($userId)
+	{
+		$this->dangerUserId = $userId;
+	}
+
+	public function getDangerUserId()
+	{
+		return $this->dangerUserId;
+	}
+
+	public function setDangerUsername($username)
+	{
+		$this->dangerUsername = $username;
+	}
+
+	public function getDangerUsername()
+	{
+		return $this->dangerUsername;
 	}
 }
