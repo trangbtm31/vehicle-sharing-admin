@@ -16,9 +16,11 @@ if(!empty($_POST['user_id']) && !empty($_POST['journey_id'])) {
     $db->query($sql);
 
     $sql = 'UPDATE journeys SET status = 6 WHERE id = '.$_POST['journey_id'];
+    $db->query($sql);
 
     echo json_encode([
-        'is_success' => 1
+        'is_success' => 1,
+        'journey_id' => $_POST['journey_id']
     ]);
 } else {
     echo json_encode([

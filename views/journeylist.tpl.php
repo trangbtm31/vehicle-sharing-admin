@@ -14,6 +14,7 @@
                                 <h4 class="modal-title">Bạn muốn khóa người dùng này ?</h4>
                             </div>
                             <input id="userid" type="number" value="" name="userid" hidden>
+                            <input id="journeyid" type="number" value="" name="userid" hidden>
                             <div class="modal-footer">
                                 <button type="button" onclick="lockUser()" class="btn btn-default" data-dismiss="modal">
                                     Có
@@ -59,13 +60,13 @@
                             </thead>
                             <tbody>
                             <?php foreach ($dangerJourneyList as $journey): ?>
-                                <tr>
+                                <tr id="<?php echo $journey->getJourneyId(); ?>">
                                     <td><?php echo $journey->getJourneyId(); ?></td>
                                     <td><?php echo $journey->getDriverUsername(); ?></td>
                                     <td><?php echo $journey->getHikerUsername(); ?></td>
                                     <td class="text-danger"
                                         style="font-weight: bold;"><?php echo $journey->getDangerUsername(); ?>
-                                        <button onclick="setUserId(<?= $journey->getDangerUserId() ?>)" type="button"
+                                        <button onclick="setUserId(<?= $journey->getDangerUserId() ?>, <?= $journey->getJourneyId(); ?>)" type="button"
                                                 data-toggle="modal" data-target="#myModal" rel="tooltip"
                                                 title="Khóa tài khoản" class="btn btn-primary btn-simple btn-xs">
                                             <i class="material-icons text-danger">lock_outline</i>
@@ -114,23 +115,29 @@
     </div>
 </div>
 <script>
-    function setUserId($userId) {
+    function setUserId($userId, $journeyId) {
         $('#userid').val($userId);
+        $('#journeyid').val($journeyId);
     }
 
     function lockUser() {
         var userId = $('#userid').val();
+        var journeyId = $('#journeyid').val();
         $.ajax({
             type: "POST",
             url: "assets/lockUser.php",
             data: {
-                'user_id': userId
+                'user_id': userId,
+				'journey_id' : journeyId
             },
             success: function (response) {
                 var result = JSON.parse(response);
                 if (result.is_success === 1) {
                     $('#success').modal();
-                }
+					$('#'+result.journey_id).hide();
+                } else {
+					console.log(result.message);
+				}
             }
         });
     }

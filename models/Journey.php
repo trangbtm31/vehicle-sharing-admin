@@ -118,6 +118,7 @@ class Journey
 				case 2: $journeyObj->setStatus("<span class='text-warning'>"._IS_STARTED_TRIP."</span>"); break;
 				case 3: $journeyObj->setStatus("<span class='text-success'>"._IS_FINISHED."</span>"); break;
 				case 5: $journeyObj->setStatus("<h3 class='text-danger'>"._IS_SOS."</h3>"); break;
+				case 6: $journeyObj->setStatus("<span class='text-primary'>"._IS_REPORTED."</span>"); break;
 			}
 
 			//Gán vào mãng lưu trữ

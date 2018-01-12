@@ -12,6 +12,7 @@ define("_IS_CANCELED", "Đã hủy");
 define("_IS_FINISHED", "Đã hoàn thành");
 define("_IS_SOS", "Nguy hiểm");
 define("_IS_STARTED_TRIP", "Đã bắt đầu chuyến đi");
+define("_IS_REPORTED", "Đã xử lý");
 define("_UPDATING", "Đang cập nhật");
 define("VEHICLE_TYPE_0", "Người đi bộ");
 define("VEHICLE_TYPE_1", "Xe máy");
