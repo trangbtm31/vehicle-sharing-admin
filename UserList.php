@@ -25,6 +25,7 @@ $userModel = new User();
 //Lấy danh sách thành viên
 $userList = $userModel->getUserList();
 $cancelJourneyUserList = $userModel->getTopDeleteJourneyUser();
+$reportedUserList = $userModel->getReportedList();
 
 //Tiêu đề trang
 $title = 'Thành viên - Danh sách';

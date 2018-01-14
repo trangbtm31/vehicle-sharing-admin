@@ -102,8 +102,6 @@ class User
             $userObj->setGender($row['gender']);
             $userObj->setCreated($row['created_at']);
             $userObj->setModified($row['updated_at']);
-            $userObj->setAvgHikerVote($row['avg_hiker_vote']);
-            $userObj->setAvgDriverVote($row['avg_driver_vote']);
             $userObj->setRole($row['role']);
             $userObj->setJourneyDeleteTimes($count);
 
@@ -117,6 +115,13 @@ class User
 
     public function getUserList() {
         $query = "SELECT * FROM users ORDER BY id DESC LIMIT 10";
+
+        return $this->getListBase($query);
+    }
+
+    public function getReportedList() {
+        //SQL
+        $query = "SELECT * FROM users WHERE role = 0";
 
         return $this->getListBase($query);
     }
@@ -145,8 +150,6 @@ class User
             $userObj->setGender($row['gender']);
             $userObj->setCreated($row['created_at']);
             $userObj->setModified($row['updated_at']);
-            $userObj->setAvgHikerVote($row['avg_hiker_vote']);
-            $userObj->setAvgDriverVote($row['avg_driver_vote']);
             $userObj->setRole($row['role']);
 
         //Gán vào mãng lưu trữ

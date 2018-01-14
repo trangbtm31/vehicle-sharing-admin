@@ -13,7 +13,7 @@
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 <h4 class="modal-title">Bạn muốn khóa người dùng này ?</h4>
                             </div>
-                            <input id="userid" type="number" value="" name="userid" hidden>
+                            <input id="lockuserid" type="number" value="" name="userid" hidden>
                             <input id="journeyid" type="number" value="" name="userid" hidden>
                             <div class="modal-footer">
                                 <button type="button" onclick="lockUser()" class="btn btn-default" data-dismiss="modal">
@@ -25,7 +25,6 @@
                     </div>
                 </div>
             </div>
-
 
             <div id="success" class="modal fade" role="dialog">
                 <div class="modal-dialog">
@@ -115,32 +114,6 @@
     </div>
 </div>
 <script>
-    function setUserId($userId, $journeyId) {
-        $('#userid').val($userId);
-        $('#journeyid').val($journeyId);
-    }
-
-    function lockUser() {
-        var userId = $('#userid').val();
-        var journeyId = $('#journeyid').val();
-        $.ajax({
-            type: "POST",
-            url: "assets/lockUser.php",
-            data: {
-                'user_id': userId,
-				'journey_id' : journeyId
-            },
-            success: function (response) {
-                var result = JSON.parse(response);
-                if (result.is_success === 1) {
-                    $('#success').modal();
-					$('#'+result.journey_id).hide();
-                } else {
-					console.log(result.message);
-				}
-            }
-        });
-    }
     $('#journeylist').addClass('active');
 </script>
 <?php require "footer.php" ?>
