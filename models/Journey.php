@@ -21,30 +21,26 @@ class Journey
 	 * @return array
 	 */
 	public function getJourneyList() {
-		$query = 'SELECT * FROM journeys ORDER BY id DESC LIMIT 10';
+		$query = "SELECT * FROM journeys ORDER BY id DESC LIMIT 10";
 
-		$result = $this->getListBase($query);
-		return $result;
+		return $this->getListBase($query);
 	}
 
 	/**
 	 * @return array
 	 */
 	public function getCancelJourneyList() {
-		$query = 'SELECT * FROM journeys WHERE status = 0 ORDER BY id DESC';
+		$query = "SELECT * FROM journeys WHERE status = 0 ORDER BY id DESC";
 
-		$result = $this->getListBase($query);
-		return $result;
+		return $this->getListBase($query);
 	}
 	/**
 	 * @return array
 	 */
 	public function getDangerJourneyList() {
-		$query = 'SELECT * FROM journeys WHERE status = 5 ORDER BY id DESC';
+		$query = "SELECT * FROM journeys WHERE status = 5 ORDER BY id DESC";
 
-
-		$result = $this->getListBase($query);
-		return $result;
+		return $this->getListBase($query);
 	}
 
 	/**
@@ -52,10 +48,11 @@ class Journey
 	 * @return array|null
 	 */
 	public function getUsername($userId) {
-		$query = "SELECT * FROM users WHERE id =".$userId;
+		$userId = $this->db->escapeString($userId);
+		$query = "SELECT * FROM `users` WHERE `id` = '$userId'";
+		$conn =$this->db->query($query);
 
-		$user = $this->db->fetch($this->db->query($query));
-		return $user;
+		return $this->db->fetch($conn);
 	}
 	
 
@@ -65,11 +62,8 @@ class Journey
 	 */
 	private function getListBase($query)
 	{
-		//SQL
-		$sql = $query;
-
 		//Query
-		$conn = $this->db->query($sql);
+		$conn = $this->db->query($query);
 
 		//Tạo mãng lưu trữ
 		$listJourney = array();
@@ -104,8 +98,10 @@ class Journey
 			$journeyObj->setUpdatedDate($row['updated_at']);
 
 			if($journeyObj->getStatus() == 5) {
-				$query5 = 'SELECT * FROM reports WHERE journey_id ='.$journeyObj->getJourneyId();
-				$dangerReport = $this->db->fetch($this->db->query($query5));
+				$journeyId = $this->db->escapeString($journeyObj->getJourneyId());
+				$query5 = "SELECT * FROM `reports` WHERE `journey_id` ='$journeyId'";
+				$conn1 = $this->db->query($query5);
+				$dangerReport = $this->db->fetch($conn1);
 				$journeyObj->setDangerLocation($dangerReport['report_location']);
 				$journeyObj->setDangerUserId($dangerReport['reported_user_id']);
 				$dangerUsername = $this->getUsername($dangerReport['reported_user_id']);

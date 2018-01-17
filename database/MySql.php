@@ -27,5 +27,9 @@ class MySql
 //Fetch và return
         return mysqli_fetch_assoc($conn);
     }
+	
+	public function escapeString($value) {
+        return mysqli_escape_string($this->connection, $value);
+	}
 }
 ?>

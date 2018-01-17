@@ -24,7 +24,6 @@ $journeyModel = new Journey();
 
 //Lấy danh sách thành viên
 $journeyList = $journeyModel->getJourneyList();
-$cancelJourneyList = $journeyModel->getCancelJourneyList();
 $dangerJourneyList = $journeyModel->getDangerJourneyList();
 
 //Tiêu đề trang
